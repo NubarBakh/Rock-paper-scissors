@@ -73,6 +73,8 @@ function playGame(playerMove){
 
 }
 
+
+
 rock.addEventListener('click', function(){
    playGame('rock')       
 })
