@@ -1,0 +1,43 @@
+body{background-color: rgb(25, 25, 25);}
+.Name{color: white;
+font-size: 25px;}
+
+
+.title{font-size: 60px;
+margin-left: 20px;
+margin-top: 10px;}
+
+.Rock, .Paper, .Scissors {
+   
+    background-color: black;
+    border-radius: 50%;
+    margin: 25px  20px;
+    border: 3px solid white;
+    
+  
+   
+}
+
+
+.js-result{
+    font-size: 40px;
+    padding: 10px;
+}
+.img{width: 50px;
+padding: 30px;}
+
+.moves{ width: 80px;
+    padding: 30px;
+color: white;
+display: flex;}
+
+.js-move{display: flex;
+    width: 10px;
+padding: 30px;
+}
+
+.reset{
+    padding: 5px;
+    width: 100px;
+    margin-top: 15px;
+}

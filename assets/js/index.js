@@ -1,12 +1,20 @@
 let rock= document.querySelector('.Rock');
 let paper=document.querySelector('.Paper');
 let scissors= document.querySelector('.Scissors');
+let reset= document.querySelector(".reset")
+let jsScore=document.querySelector('.js-score');
+let jsResult=document.querySelector('.js-result');
+let jsMove= document.querySelector('.js-move')
 
-const score ={
+let score ={
     wins : 0,
     losses:0,
     ties :0
+   
 }
+
+
+updateScore();
 
 
 
@@ -29,6 +37,14 @@ function pickComputerMove (){
 
 function playGame(playerMove){
     let computerMove =pickComputerMove ()
+
+    let currentScore =JSON.parse(localStorage.getItem('score'))
+
+    if (!currentScore){
+       score={ wins:0,
+        losses:0,
+        ties:0}
+    }
 
     let result ='';
 
@@ -61,19 +77,37 @@ function playGame(playerMove){
             score.ties+=1
         }
 
- 
-        /* Wins: ${score.wins}, Losses:${score.losses}, Ties: ${score.ties}*/
 
 
-    alert (`You picked ${playerMove}. Computer picked ${computerMove}. ${result} 
-    Wins: ${score.wins}, Losses:${score.losses}, Ties: ${score.ties}
-   `)
-
+        localStorage.setItem('score',JSON.stringify(score))
     
-
+        updateScore();
+      
+        jsResult.innerHTML= result;
+        jsMove.innerHTML=`You
+        <img src="./assets/img/${playerMove}-emoji.png" alt="">
+        <img src="./assets/img/${computerMove}-emoji.png" alt="">
+       
+        Computer`
+       
+   
 }
 
 
+function updateScore(){
+    jsScore.innerHTML=`Wins: ${score.wins}, Losses:${score.losses}, Ties: ${score.ties}`
+}
+
+
+
+reset.addEventListener('click',function(){
+
+    score.wins =0;
+    score.losses=0;
+    score.ties=0
+    localStorage.removeItem('score');
+    updateScore();
+})
 
 rock.addEventListener('click', function(){
    playGame('rock')       
